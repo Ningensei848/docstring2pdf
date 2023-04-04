@@ -1,0 +1,172 @@
+site_name: DocString to PDF
+site_url: "https://ningensei848.github.io/docstring2pdf"
+site_description: This is Documentation for docstring2pdf
+repo_url: https://github.com/ningensei848/docstring2pdf
+repo_name: "ningensei848/docstring2pdf"
+site_author: "Ningensei848"
+copyright: "&copy; 2023 Kiai de Nantoka"
+
+# Build directories --------------------------------------------------------------------
+# cf. https://www.mkdocs.org/user-guide/configuration/?#build-directories
+theme:
+  name: "material"
+  favicon: https://ningensei848.github.io/img/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: BIZ UDPGothic
+    code: Noto Sans Mono
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - header.autohide
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+  search:
+    lang: 'ja'
+docs_dir: docs
+site_dir: build
+extra_css:
+  - stylesheets/base.css
+  - stylesheets/material.css
+  - stylesheets/mkdocstrings.css
+
+# Preview controls ---------------------------------------------------------------------
+# cf. https://www.mkdocs.org/user-guide/configuration/?#preview-controls
+watch:
+  - docs
+  - src
+
+# Formatting options -------------------------------------------------------------------
+# cf. https://www.mkdocs.org/user-guide/configuration/?#formatting-options
+plugins:
+  # 検索フォーム設置
+  - search:
+      # 検索インデックスの単語区切り文字設定
+      separator: '[\s\-\.]+'
+  - gen-files:
+      scripts:
+      - src/gen_ref_pages.py  # 自動生成
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - social:
+      cards_font: Noto Sans JP
+  # docstring から自動生成
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: yes
+            merge_init_into_class: yes
+            show_submodules: no
+
+  # サイトではなく PDF として出力
+  - with-pdf: # cf. https://github.com/orzih/mkdocs-with-pdf
+      # author:
+      # copyright:
+      # 表紙の設定 ----------------------------
+      # cover: false
+      # back_cover: true
+      # cover_title: TITLE TEXT
+      cover_subtitle: via GitHub Actions # default is "None"
+      # custom_template_path: TEMPLATES PATH
+      # 目次の設定 ----------------------------
+      # toc_title: TOC TITLE TEXT
+      # heading_shift: false
+      # toc_level: 3
+      # ordered_chapter_level: 2
+      # excludes_children:
+      #    - 'release-notes/:upgrading'
+      #    - 'release-notes/:changelog'
+      # -------------------------------------
+      # exclude_pages:
+      #    - 'bugs/'
+      #    - 'appendix/contribute/'
+      # convert_iframe:
+      #    - src: IFRAME SRC
+      #      img: POSTER IMAGE URL
+      #      text: ALTERNATE TEXT
+      #    - src: ...
+      # two_columns_level: 3
+      #
+      # render_js: true
+      # headless_chrome_path: headless-chromium
+      #
+      output_path: document.pdf
+      enabled_if_env: ENABLE_PDF_EXPORT
+      #
+      # debug_html: true
+      # show_anchors: true
+      # verbose: true
+
+# Markdown extensions ------------------------------------------------------------------
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
+      pygments_lang_class: true
+      auto_title: true
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.superfences
+  - toc:
+      permalink: "¤"
+
+# Documentation layout -----------------------------------------------------------------
+# cf. https://www.mkdocs.org/user-guide/configuration/?#documentation-layout
+nav:
+- Home:
+  - Overview: index.md
+  - Getting Started: how-it-works.md
+  - Installation: how-to-introduce.md
+#   - Changelog: changelog.md
+#   - Credits: credits.md
+# - Usage:
+#   - usage.md
+#   - Theming: theming.md
+#   - Troubleshooting: troubleshooting.md
+# defer to gen-files + literate-nav
+- Code Reference: reference/
+- License: license.md
+# - Development:
+#   - Contributing: contributing.md
+#   - Code of Conduct: code_of_conduct.md
+#   - Coverage report: coverage.md
+
+# Extra --------------------------------------------------------------------------------
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/Ningensei848
+      name: Ningensei848 on Twitter
+    - icon: fontawesome/brands/github
+      link: https://github.com/Ningensei848/docstring2pdf
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX

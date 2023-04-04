@@ -1,0 +1,142 @@
+[tool.poetry]
+name = "docstring2pdf"
+version = "0.0.1"
+description = ""
+authors = ["Ningensei848 <k.kubokawa@klis.tsukuba.ac.jp>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "^1.0.0"
+pillow = "^9.5.0"
+cairosvg = "^2.7.0"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.10.3"
+flake8 = "^6.0.0"
+bandit = { extras = ["toml"], version = "^1.7.4" }
+mypy = "^1.1.1"
+black = "^23.3.0"
+isort = { extras = [
+    "pipfile_deprecated_finder",
+    "requirements_deprecated_finder",
+], version = "^5.10.1" }
+Flake8-pyproject = "^1.1.0.post0"
+# `pre-commit` は、"TOML で深いネストを表現するのはつらすぎる"ということで pyproject.toml には（今後も永劫）対応しない
+# よって、別途設定ファイルを書く必要がある cf. https://github.com/pre-commit/pre-commit/issues/1165
+pre-commit = "^3.2.1"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+# ドキュメントを docstring から作成し、PDFに書き出す
+mkdocs = "^1.4.2"
+mkdocs-with-pdf = "^0.9.3"
+mkdocs-material = "^9.1.4"
+weasyprint = "^58.1"
+mkdocstrings = { extras = ["python"], version = "^0.20.0" }
+mkdocs-autorefs = "^0.4.1"
+mkdocs-gen-files = "^0.4.0"
+mkdocs-literate-nav = "^0.6.0"
+mkdocs-section-index = "^0.3.5"
+
+[tool.taskipy.tasks]
+# タスクランナー：実行したいタスクを変数名として宣言
+# poetry run task XXXX として実行可能
+lint = "flake8 ."
+bandit = "bandit -c pyproject.toml -r ."
+mypy = "mypy --config-file pyproject.toml"
+format = "black ."
+isort = "isort ."
+# for generating documentation
+docs_export = "ENABLE_PDF_EXPORT=1 mkdocs build && rm mkdocs.yml && mv backup_mkdocs.yml mkdocs.yml"
+docs_serve = "mkdocs serve"
+
+[tool.flake8]
+# pycodestyle(pep8) エラーコードチートシート - Qiita
+# cf. https://qiita.com/KuruwiC/items/8e12704e338e532eb34a
+# ignore はデフォルト設定を上書きしてしまうので、それを避けて追記するためには extend-ignore を使う
+# black との競合を解消するために E203 も追加
+# cf. https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#flake8
+extend-ignore = ["E203", "E402", "W501"]
+max-line-length = 79
+max-complexity = 20
+exclude = ".venv"
+per-file-ignores = ['__init__.py:F401']
+count = true
+
+[tool.bandit]
+# cf. https://bandit.readthedocs.io/en/latest/config.html
+exclude_dirs = [".venv", "tests"]
+tests = ["B201", "B301"]
+skips = ["B101", "B601"]
+
+
+[tool.mypy]
+# cf. https://mypy.readthedocs.io/en/stable/config_file.html
+# python_version = 3.9 or 3.10 or 3.11 or otherwise
+# エラー時のメッセージを詳細表示
+show_error_context = true
+# エラー発生箇所の行数/列数を表示
+show_column_numbers = true
+# 関数定義の引数/戻り値に型アノテーション必須
+disallow_untyped_defs = true
+# デフォルト引数に None を取る場合型アノテーションに Optional 必須
+no_implicit_optional = true
+# 戻り値が Any 型ではない関数の戻り値の型アノテーションが Any のとき警告
+warn_return_any = true
+# mypy エラーに該当しない箇所に `# type: ignore` コメントが付与されていたら警告
+# ※ `# type: ignore` が付与されている箇所は mypy のエラーを無視出来る
+warn_unused_ignores = true
+# 冗長なキャストに警告
+warn_redundant_casts = true
+# 設定に書かれた変数に typo があれば警告を出す
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+# Note: small-start ... 型情報がない外部ライブラリについては、一旦無視する
+module = []
+# import 先のチェックを行わない (デフォルトだとサードパーティーライブラリまでチェックする)
+ignore_missing_imports = true
+
+
+[tool.black]
+line-length = 79
+# target-version = ["py39", "py310", "py311"]
+include = '\.pyi?$'
+# 'singleQuote' を "doubleQuote" に変換しない
+# skip-string-normalization = true
+# フォーマットしないファイル
+# 'extend-exclude' excludes files or directories in addition to the defaults
+exclude = '''
+(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | venv
+    | \.idea
+    | \.vscode
+    | _build
+    | buck-out
+    | build
+    | dist
+    | migrations
+)
+'''
+
+[tool.isort]
+# blackと共存して使う設定
+# https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
+profile = "black"
+# .gitignoreファイルで指定されているファイルを除外
+skip_gitignore = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

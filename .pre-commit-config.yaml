@@ -1,0 +1,44 @@
+# cf. https://pre-commit.com/
+
+default_language_version:
+  python: python3.9
+
+repos:
+  # flake8: style check
+  - repo: https://github.com/pycqa/flake8
+    rev: "6.0.0" # Update me! cf. https://github.com/PyCQA/flake8/tags
+    hooks:
+      - id: flake8
+        additional_dependencies: ["Flake8-pyproject"]
+
+  # bandit: security check
+  - repo: https://github.com/PyCQA/bandit
+    rev: "1.7.5" # Update me! cf. https://github.com/PyCQA/bandit/releases
+    hooks:
+      - id: bandit
+        args: ["-c", "pyproject.toml"]
+        additional_dependencies: ["bandit[toml]"]
+
+  # mypy: static code check
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v1.1.1" # Update me! cf. https://github.com/pre-commit/mirrors-mypy/tags
+    hooks:
+      - id: mypy
+        args: ["--ignore-missing-imports", "--config-file", "pyproject.toml"]
+
+  # black: code format
+  - repo: https://github.com/psf/black
+    rev: "23.3.0" # Update me! cf. https://github.com/psf/black/releases
+    hooks:
+      - id: black
+  # isort: import of libraries sort
+  - repo: https://github.com/pycqa/isort
+    rev: "5.11.5" # Update me! cf. https://github.com/PyCQA/isort/releases
+    hooks:
+      - id: isort
+        name: isort (python)
+  # # nbstripout: strip output from Jupyter and IPython notebooks
+  # - repo: https://github.com/kynan/nbstripout
+  #   rev: "0.6.0" # Update me! cf. https://github.com/kynan/nbstripout/releases
+  #   hooks:
+  #     - id: nbstripout

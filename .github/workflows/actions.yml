@@ -1,0 +1,131 @@
+name: Sync GitHub and Google Drive
+
+on: [push, workflow_dispatch]
+
+env:
+  TZ: 'Asia/Tokyo'
+  PYTHON_VERSION: 3.9
+  FILE_TITLE: 'docstring2pdf'
+  BRANCH: ${{ github.ref_name }}
+  DRIVE: google_drive  # nickname of remote drive
+
+jobs:
+  bdsd:
+    runs-on: ubuntu-22.04
+    name: Build, Deploy and Sync Docs
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      id-token: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+
+    - name: Checkout the Committed Branch
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ env.BRANCH }}
+
+    # via pipx ‖ cf. https://pypa.github.io/pipx/
+    - name: Set Up Poetry
+      run: pipx install poetry
+
+    - name: Set Up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: "poetry"
+
+    - name: Set Up MkDocs Caching
+      uses: actions/cache@v3
+      with:
+        key: ${{ github.ref }}
+        path: .cache
+
+    - name: Set Up Japanese Fonts
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y fonts-mplus
+
+    - name: Poetry Config and Install Dependencies
+      run: |
+        poetry --version
+        poetry config virtualenvs.in-project true
+        poetry env use ${{ env.PYTHON_VERSION }}
+        poetry install --no-interaction --with docs
+
+    - name: Build Docs and Export PDF
+      env:
+        GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
+        GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+      run: |
+        poetry run python src/inject_external_info.py
+        ENABLE_PDF_EXPORT=1 poetry run mkdocs build
+        rm mkdocs.yml
+        mv backup_mkdocs.yml mkdocs.yml
+        mv "build/document.pdf" "docs/${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf"
+
+    # Popular action to deploy to GitHub Pages:
+    # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-static-site-generators-with-python
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.ref == 'refs/heads/main' }}
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Build output to publish to the `gh-pages` branch:
+          publish_dir: ./build
+          # The following lines assign commit authorship to the official
+          # GH-Actions bot for deploys to `gh-pages` branch:
+          # https://github.com/actions/checkout/issues/13#issuecomment-724415212
+          # The GH actions bot is used by default if you didn't specify the two fields.
+          # You can swap them out with your own user credentials.
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+    # 本当は workload identity を使いたいが、rclone 側で対応できていない模様
+    # # Configure Workload Identity Federation via a credentials file.
+    # - name: Authenticate to Google Cloud
+    #   uses: google-github-actions/auth@v1
+    #   id: auth
+    #   with:
+    #     # cf. https://github.com/google-github-actions/auth#outputs
+    #     token_format: access_token
+    #     access_token_scopes: https://www.googleapis.com/auth/drive
+    #     access_token_subject: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+    #     create_credentials_file: true
+    #     workload_identity_provider: ${{ secrets.GCP_WI_PROVIDER }}
+    #     service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+    #     access_token_lifetime: 300s
+
+    - name: Install Rclone
+      run: sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+    - name: Rclone Config
+      env:
+        RCLONE_DRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.SERVICE_ACCOUNT_CREDENTIAL }}
+      run: |
+        rclone config create ${{ env.DRIVE }} drive scope=drive \
+          root_folder_id="${{ secrets.ROOT_FOLDER_ID }}" \
+          drive-team-drive="${{ secrets.TEAM_DRIVE_ID }}" \
+          --non-interactive
+        cat $(rclone config file | head -2 | tail -1)
+        rclone -v --drive-impersonate ${{ secrets.GCP_SERVICE_ACCOUNT }} lsd ${{ env.DRIVE }}:
+
+    - name: Sync with Google Drive
+      env:
+        RCLONE_DRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.SERVICE_ACCOUNT_CREDENTIAL }}
+        RCLONE_DRIVE_IMPERSONATE: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+      run: |
+        rclone backend drives ${{ env.DRIVE }}:
+        rclone about ${{ env.DRIVE }}:
+        rclone sync "docs/${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf" \
+          ${{ env.DRIVE }}:${{ secrets.GOOGLE_DRIVE_DIR }}
+      # dedupe しなくても、ファイル名が同じならドライブ側でバージョン管理してくれる
+      # run: rclone sync <source>:<source_path> <dest>:<dest_path>
+      # 例:)  sync ./rclone_test google_drive:rclone_test
+
+
+# reference:
+#   cache:
+#   - https://github.com/actions/setup-python/blob/main/docs/advanced-usage.md#caching-packages
+#   - https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#caching
