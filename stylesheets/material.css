@@ -1,0 +1,5 @@
+/* More space at the bottom of the page. */
+/* cf. https://github.com/mkdocstrings/mkdocstrings/blob/master/docs/css/material.css */
+.md-main__inner {
+    margin-bottom: 1.5rem;
+}
