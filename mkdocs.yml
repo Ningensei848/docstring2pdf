@@ -10,6 +10,7 @@ copyright: "&copy; 2023 Kiai de Nantoka"
 # cf. https://www.mkdocs.org/user-guide/configuration/?#build-directories
 theme:
   name: "material"
+  custom_dir: overrides
   favicon: https://ningensei848.github.io/img/favicon.ico
   icon:
     repo: fontawesome/brands/github
