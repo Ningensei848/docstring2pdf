@@ -11,6 +11,23 @@ python-dotenv = "^1.0.0"
 pillow = "^9.5.0"
 cairosvg = "^2.7.0"
 
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+# ドキュメントを docstring から作成し、PDFに書き出す
+mkdocs = "^1.4.2"
+mkdocs-with-pdf = "^0.9.3"
+mkdocs-material = "^9.1.4"
+weasyprint = "^58.1"
+mkdocstrings = { extras = ["python"], version = "^0.20.0" }
+mkdocs-autorefs = "^0.4.1"
+mkdocs-gen-files = "^0.4.0"
+mkdocs-literate-nav = "^0.6.0"
+mkdocs-section-index = "^0.3.5"
+
+
 [tool.poetry.group.dev]
 optional = true
 
@@ -29,20 +46,6 @@ Flake8-pyproject = "^1.1.0.post0"
 # よって、別途設定ファイルを書く必要がある cf. https://github.com/pre-commit/pre-commit/issues/1165
 pre-commit = "^3.2.1"
 
-[tool.poetry.group.docs]
-optional = true
-
-[tool.poetry.group.docs.dependencies]
-# ドキュメントを docstring から作成し、PDFに書き出す
-mkdocs = "^1.4.2"
-mkdocs-with-pdf = "^0.9.3"
-mkdocs-material = "^9.1.4"
-weasyprint = "^58.1"
-mkdocstrings = { extras = ["python"], version = "^0.20.0" }
-mkdocs-autorefs = "^0.4.1"
-mkdocs-gen-files = "^0.4.0"
-mkdocs-literate-nav = "^0.6.0"
-mkdocs-section-index = "^0.3.5"
 
 [tool.taskipy.tasks]
 # タスクランナー：実行したいタスクを変数名として宣言
@@ -53,7 +56,7 @@ mypy = "mypy --config-file pyproject.toml"
 format = "black ."
 isort = "isort ."
 # for generating documentation
-docs_export = "ENABLE_PDF_EXPORT=1 mkdocs build && rm mkdocs.yml && mv backup_mkdocs.yml mkdocs.yml"
+docs_export = "python src/inject_external_info.py && ENABLE_PDF_EXPORT=1 mkdocs build && rm mkdocs.yml && mv backup_mkdocs.yml mkdocs.yml"
 docs_serve = "mkdocs serve"
 
 [tool.flake8]
