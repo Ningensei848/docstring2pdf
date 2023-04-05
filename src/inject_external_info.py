@@ -39,6 +39,7 @@ def prepare_google_ads() -> None:
         '{% extends "base.html" %}\n',
         "{% block extrahead %}",
         "\t<script async"
+        + " "  # whitespace * 1
         + 'src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
         + f'?client={ads_id}" crossorigin="anonymous"></script>',
         "{% endblock %}\n",
