@@ -65,7 +65,7 @@ def setEditPath(directory: Path) -> None:
 
 
 for d in dirs:
-    print(d)
+    print(f"set edit path: {d}")
     setEditPath(cwd / d)
 
 sources = [
