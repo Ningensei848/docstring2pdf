@@ -462,6 +462,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#src.inject_external_info.prepare_template_sitemap" class="md-nav__link">
+    prepare_template_sitemap()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -533,6 +540,13 @@
         <li class="md-nav__item">
   <a href="#src.inject_external_info.prepare_google_analytics" class="md-nav__link">
     prepare_google_analytics()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.inject_external_info.prepare_template_sitemap" class="md-nav__link">
+    prepare_template_sitemap()
   </a>
   
 </li>
@@ -674,6 +688,64 @@ Theme ごとに書き方の揺れはあるが、おおよそ <code>G-XXXXX</code
 <a id="__codelineno-0-70" name="__codelineno-0-70"></a><a href="#__codelineno-0-70"><span class="linenos" data-linenos="70 "></span></a>    <span class="n">mkdocs_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">pattern_ga4</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">ga4_id</span><span class="p">,</span> <span class="n">config</span><span class="p">))</span>
 <a id="__codelineno-0-71" name="__codelineno-0-71"></a><a href="#__codelineno-0-71"><span class="linenos" data-linenos="71 "></span></a>
 <a id="__codelineno-0-72" name="__codelineno-0-72"></a><a href="#__codelineno-0-72"><span class="linenos" data-linenos="72 "></span></a>    <span class="k">return</span>
+</code></pre></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="src.inject_external_info.prepare_template_sitemap" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">prepare_template_sitemap</span><span class="p">()</span></code>
+
+<a href="#src.inject_external_info.prepare_template_sitemap" class="headerlink" title="Permanent link">¤</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Fix <code>sitemap.xml</code> with incorrect value <code>None</code></p>
+<p>MkDocs ではデフォルトで <code>sitemap.xml</code> を出力する機能があるのだが、
+いろいろなプラグインを入れていく過程でなぜか不正なURLを持つようになってしまった。</p>
+<p><code>&lt;loc&gt;None&lt;/loc&gt;</code> となっている部分を排除すればいいので、
+Jinja2 template の該当部分を見て条件分岐を修正した。</p>
+
+      <details class="quote">
+        <summary>Source code in <code>src/inject_external_info.py</code></summary>
+        <div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-0-75" name="__codelineno-0-75"></a><a href="#__codelineno-0-75"><span class="linenos" data-linenos=" 75 "></span></a><span class="k">def</span> <span class="nf">prepare_template_sitemap</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a><a href="#__codelineno-0-76"><span class="linenos" data-linenos=" 76 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fix `sitemap.xml` with incorrect value `None`</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a><a href="#__codelineno-0-77"><span class="linenos" data-linenos=" 77 "></span></a>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a><a href="#__codelineno-0-78"><span class="linenos" data-linenos=" 78 "></span></a><span class="sd">    MkDocs ではデフォルトで `sitemap.xml` を出力する機能があるのだが、</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a><a href="#__codelineno-0-79"><span class="linenos" data-linenos=" 79 "></span></a><span class="sd">    いろいろなプラグインを入れていく過程でなぜか不正なURLを持つようになってしまった。</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a><a href="#__codelineno-0-80"><span class="linenos" data-linenos=" 80 "></span></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a><a href="#__codelineno-0-81"><span class="linenos" data-linenos=" 81 "></span></a><span class="sd">    `&lt;loc&gt;None&lt;/loc&gt;` となっている部分を排除すればいいので、</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a><a href="#__codelineno-0-82"><span class="linenos" data-linenos=" 82 "></span></a><span class="sd">    Jinja2 template の該当部分を見て条件分岐を修正した。</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a><a href="#__codelineno-0-83"><span class="linenos" data-linenos=" 83 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><a href="#__codelineno-0-84"><span class="linenos" data-linenos=" 84 "></span></a>    <span class="n">filepath</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;overrides/sitemap.xml&quot;</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><a href="#__codelineno-0-85"><span class="linenos" data-linenos=" 85 "></span></a>    <span class="n">filepath</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a><a href="#__codelineno-0-86"><span class="linenos" data-linenos=" 86 "></span></a>    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a><a href="#__codelineno-0-87"><span class="linenos" data-linenos=" 87 "></span></a>        <span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a><a href="#__codelineno-0-88"><span class="linenos" data-linenos=" 88 "></span></a>        <span class="s1">&#39;&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a><a href="#__codelineno-0-89"><span class="linenos" data-linenos=" 89 "></span></a>        <span class="s2">&quot;{</span><span class="si">%- f</span><span class="s2">or file in pages -%}&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a><a href="#__codelineno-0-90"><span class="linenos" data-linenos=" 90 "></span></a>        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">{</span><span class="si">% i</span><span class="s2">f not file.page.is_link and not file.page.canonical_url is none&quot;</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a><a href="#__codelineno-0-91"><span class="linenos" data-linenos=" 91 "></span></a>        <span class="s2">&quot; and not file.page.abs_url is none %}&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><a href="#__codelineno-0-92"><span class="linenos" data-linenos=" 92 "></span></a>        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&lt;url&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a><a href="#__codelineno-0-93"><span class="linenos" data-linenos=" 93 "></span></a>        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&lt;loc&gt;{</span><span class="si">% i</span><span class="s2">f file.page.canonical_url %}&quot;</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><a href="#__codelineno-0-94"><span class="linenos" data-linenos=" 94 "></span></a>        <span class="s2">&quot;{{ file.page.canonical_url|e }}{</span><span class="si">% e</span><span class="s2">lse %}{{ file.page.abs_url|e }}&quot;</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a><a href="#__codelineno-0-95"><span class="linenos" data-linenos=" 95 "></span></a>        <span class="s2">&quot;{</span><span class="si">% e</span><span class="s2">ndif %}&lt;/loc&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><a href="#__codelineno-0-96"><span class="linenos" data-linenos=" 96 "></span></a>        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">{</span><span class="si">% i</span><span class="s2">f file.page.update_date %}&lt;lastmod&gt;&quot;</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><a href="#__codelineno-0-97"><span class="linenos" data-linenos=" 97 "></span></a>        <span class="s2">&quot;{{file.page.update_date}}&lt;/lastmod&gt;{</span><span class="si">% e</span><span class="s2">ndif %}&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a><a href="#__codelineno-0-98"><span class="linenos" data-linenos=" 98 "></span></a>        <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&lt;changefreq&gt;monthly&lt;/changefreq&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><a href="#__codelineno-0-99"><span class="linenos" data-linenos=" 99 "></span></a>        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&lt;/url&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a><a href="#__codelineno-0-100"><span class="linenos" data-linenos="100 "></span></a>        <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">{</span><span class="si">%- e</span><span class="s2">ndif -%}&quot;</span> <span class="s2">&quot;{</span><span class="si">% e</span><span class="s2">ndfor %}&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a><a href="#__codelineno-0-101"><span class="linenos" data-linenos="101 "></span></a>        <span class="s2">&quot;&lt;/urlset&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a><a href="#__codelineno-0-102"><span class="linenos" data-linenos="102 "></span></a>    <span class="p">]</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a><a href="#__codelineno-0-103"><span class="linenos" data-linenos="103 "></span></a>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a><a href="#__codelineno-0-104"><span class="linenos" data-linenos="104 "></span></a>    <span class="n">filepath</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a><a href="#__codelineno-0-105"><span class="linenos" data-linenos="105 "></span></a>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a><a href="#__codelineno-0-106"><span class="linenos" data-linenos="106 "></span></a>    <span class="k">return</span>
 </code></pre></div>
       </details>
   </div>
