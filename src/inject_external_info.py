@@ -72,6 +72,41 @@ def prepare_google_analytics() -> None:
     return
 
 
+def prepare_template_sitemap() -> None:
+    """Fix `sitemap.xml` with incorrect value `None`
+
+    MkDocs ではデフォルトで `sitemap.xml` を出力する機能があるのだが、
+    いろいろなプラグインを入れていく過程でなぜか不正なURLを持つようになってしまった。
+
+    `<loc>None</loc>` となっている部分を排除すればいいので、
+    Jinja2 template の該当部分を見て条件分岐を修正した。
+    """
+    filepath = Path.cwd() / "overrides/sitemap.xml"
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        "{%- for file in pages -%}",
+        "\t{% if not file.page.is_link and not file.page.canonical_url is none"
+        " and not file.page.abs_url is none %}",
+        "\t<url>",
+        "\t\t<loc>{% if file.page.canonical_url %}"
+        "{{ file.page.canonical_url|e }}{% else %}{{ file.page.abs_url|e }}"
+        "{% endif %}</loc>",
+        "\t\t{% if file.page.update_date %}<lastmod>"
+        "{{file.page.update_date}}</lastmod>{% endif %}",
+        "\t\t<changefreq>monthly</changefreq>",
+        "\t</url>",
+        "\t{%- endif -%}" "{% endfor %}",
+        "</urlset>",
+    ]
+
+    filepath.write_text("\n".join(lines))
+
+    return
+
+
 if __name__ == "__main__":
     prepare_google_ads()
     prepare_google_analytics()
+    prepare_template_sitemap()
