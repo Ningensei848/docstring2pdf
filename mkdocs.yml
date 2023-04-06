@@ -36,6 +36,8 @@ theme:
     - navigation.expand
     - navigation.top
     - navigation.footer
+    - content.code.copy
+    - content.code.annotate
   search:
     lang: 'ja'
 docs_dir: docs
@@ -58,6 +60,7 @@ plugins:
   - search:
       # 検索インデックスの単語区切り文字設定
       separator: '[\s\-\.]+'
+  - glightbox # cf. https://blueswen.github.io/mkdocs-glightbox/
   - gen-files:
       scripts:
       - scripts/gen_ref_pages.py  # 自動生成
@@ -118,6 +121,8 @@ plugins:
 
 # Markdown extensions ------------------------------------------------------------------
 markdown_extensions:
+  - attr_list
+  - md_in_html
   - admonition
   - pymdownx.details
   - pymdownx.emoji
@@ -145,7 +150,8 @@ nav:
 - Home:
   - Overview: index.md
   - Getting Started: how-it-works.md
-  - Installation: how-to-introduce.md
+  - Installation: how-to-install.md
+  - Export & Upload: how-to-use.md
 #   - Changelog: changelog.md
 #   - Credits: credits.md
 # - Usage:

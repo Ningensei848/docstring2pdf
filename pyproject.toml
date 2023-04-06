@@ -26,6 +26,7 @@ mkdocs-autorefs = "^0.4.1"
 mkdocs-gen-files = "^0.4.0"
 mkdocs-literate-nav = "^0.6.0"
 mkdocs-section-index = "^0.3.5"
+mkdocs-glightbox = "^0.3.2"
 
 
 [tool.poetry.group.dev]

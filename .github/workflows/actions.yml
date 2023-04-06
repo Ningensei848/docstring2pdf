@@ -120,7 +120,7 @@ jobs:
         rclone backend drives ${{ env.DRIVE }}:
         rclone about ${{ env.DRIVE }}:
         export FILENAME="docs/$(echo "${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf" | sed "s#/#+#g")"
-        rclone sync $FILENAME ${{ env.DRIVE }}:${{ secrets.GOOGLE_DRIVE_DIR }}
+        rclone sync $FILENAME ${{ env.DRIVE }}:${{ secrets.GOOGLE_DRIVE_DIR || env.FILE_TITLE || 'docstring2pdf' }}
       # dedupe しなくても、ファイル名が同じならドライブ側でバージョン管理してくれる
       # run: rclone sync <source>:<source_path> <dest>:<dest_path>
       # 例:)  sync ./rclone_test google_drive:rclone_test

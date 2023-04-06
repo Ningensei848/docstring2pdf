@@ -1058,6 +1058,21 @@ files = [
 mkdocs = ">=1.0.3,<2.0.0"
 
 [[package]]
+name = "mkdocs-glightbox"
+version = "0.3.2"
+description = "MkDocs plugin supports image lightbox with GLightbox."
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mkdocs-glightbox-0.3.2.tar.gz", hash = "sha256:aec32193fa367f83a5159a10ef0a0e501e595860f4399fb860ca1c5d95fd099d"},
+    {file = "mkdocs_glightbox-0.3.2-py3-none-any.whl", hash = "sha256:ef168717e0d6f5e3b33afa8a62837e9ea3b8754fbf073760db169650edbcb866"},
+]
+
+[package.dependencies]
+beautifulsoup4 = ">=4.11.1"
+
+[[package]]
 name = "mkdocs-literate-nav"
 version = "0.6.0"
 description = "MkDocs plugin to specify the navigation in Markdown instead of YAML"
@@ -2284,4 +2299,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "8d90e2384ca70588eb3f571e42695fc988bbc1349623429bf08b2c33f287dcfa"
+content-hash = "c53f001cc2f6e0d9c11a19ecdd81ff97297a4ef376437feee8d18e6beb2240a0"
