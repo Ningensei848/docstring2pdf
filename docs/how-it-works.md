@@ -14,7 +14,7 @@ date: 2023-04-03
 2. [`MkDocs`](https://www.mkdocs.org/) で静的サイトを生成
 3. [`mkdocs-with-pdf`](https://github.com/orzih/mkdocs-with-pdf) でサイトを PDF 化
 
-## `mkdocstrings`
+### `mkdocstrings`
 
 [Recipes](https://mkdocstrings.github.io/recipes/) にもある通り、
 さらに他の _plugins_ と組み合わせることによって、 docstring から文書の自動生成を達成している。
@@ -26,7 +26,7 @@ date: 2023-04-03
 これらの組み合わせにより、いちいち別のファイルを経由せずとも
 対象の `*.py` ファイルから抜き出してページを生成できるようになっている。
 
-## `MkDocs`
+### `MkDocs`
 
 プロジェクトの根幹を成すのが静的サイトジェネレータの一つである *MkDocs* だ。
 ただし、これはあくまでベースとしての利用にとどめており、実際にメインを飾っているのは
@@ -37,7 +37,7 @@ https://squidfunk.github.io/mkdocs-material
 テーマがきれいであることはもとより、様々なカスタマイズができるし、開発も盛んである。
 これのおかげで、いま読んでいるこのドキュメントも今風のいい感じの UX を提供できている。
 
-## `mkdocs-with-pdf`
+### `mkdocs-with-pdf`
 
 https://github.com/orzih/mkdocs-with-pdf
 
@@ -48,14 +48,14 @@ https://github.com/orzih/mkdocs-with-pdf
 メンテされていない風に見えるのが非常に気になるところだが、
 代替案が見つけられていない以上仕方がない。
 
-# GitHub Actions and Google Drive
+## GitHub Actions and Google Drive
 
 ３つの機能の外側には、GitHub Actions によるビルド自動化と
  [`rclone`](https://rclone.org/drive) による Google Drive との同期も行われている。
 リポジトリに変更があるたびにトリガーされ、
 ブランチごとのドキュメントがドライブにアップロードされるという仕組みである。
 
-## `rclone`
+### `rclone`
 
 > クラウドストレージ上のファイル管理を行うオープンソースのコマンドライン型プログラムです。
 > Amazon S3やGoogle Drive、Alibaba Cloud、Dropbox、Megaなど40以上の
