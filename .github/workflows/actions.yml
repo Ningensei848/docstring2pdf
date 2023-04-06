@@ -59,11 +59,12 @@ jobs:
         GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
         GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
       run: |
-        poetry run python src/inject_external_info.py
+        poetry run python scripts/inject_external_info.py
         ENABLE_PDF_EXPORT=1 poetry run mkdocs build
         rm mkdocs.yml
         mv backup_mkdocs.yml mkdocs.yml
-        mv "build/document.pdf" "docs/${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf"
+        export FILENAME="docs/$(echo "${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf" | sed "s#/#+#g")"
+        mv "build/document.pdf" $FILENAME
 
     # Popular action to deploy to GitHub Pages:
     # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-static-site-generators-with-python
@@ -118,8 +119,8 @@ jobs:
       run: |
         rclone backend drives ${{ env.DRIVE }}:
         rclone about ${{ env.DRIVE }}:
-        rclone sync "docs/${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf" \
-          ${{ env.DRIVE }}:${{ secrets.GOOGLE_DRIVE_DIR }}
+        export FILENAME="docs/$(echo "${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf" | sed "s#/#+#g")"
+        rclone sync $FILENAME ${{ env.DRIVE }}:${{ secrets.GOOGLE_DRIVE_DIR }}
       # dedupe しなくても、ファイル名が同じならドライブ側でバージョン管理してくれる
       # run: rclone sync <source>:<source_path> <dest>:<dest_path>
       # 例:)  sync ./rclone_test google_drive:rclone_test

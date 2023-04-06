@@ -10,7 +10,7 @@ from pathlib import Path
 
 import mkdocs_gen_files
 
-dirs = ["src"]
+dirs = ["scripts"]
 cwd = Path.cwd()
 
 nav = mkdocs_gen_files.Nav()

@@ -49,7 +49,7 @@ extra_css:
 # cf. https://www.mkdocs.org/user-guide/configuration/?#preview-controls
 watch:
   - docs
-  - src
+  - scripts
 
 # Formatting options -------------------------------------------------------------------
 # cf. https://www.mkdocs.org/user-guide/configuration/?#formatting-options
@@ -60,7 +60,7 @@ plugins:
       separator: '[\s\-\.]+'
   - gen-files:
       scripts:
-      - src/gen_ref_pages.py  # 自動生成
+      - scripts/gen_ref_pages.py  # 自動生成
   - literate-nav:
       nav_file: SUMMARY.md
   - section-index
