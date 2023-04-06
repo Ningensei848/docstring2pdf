@@ -2,32 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://ningensei848.github.io/docstring2pdf/</loc>
-		<lastmod>2023-04-05</lastmod>
+		<lastmod>2023-04-06</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
 		<loc>https://ningensei848.github.io/docstring2pdf/how-it-works/</loc>
-		<lastmod>2023-04-05</lastmod>
+		<lastmod>2023-04-06</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>https://ningensei848.github.io/docstring2pdf/how-to-introduce/</loc>
-		<lastmod>2023-04-05</lastmod>
+		<loc>https://ningensei848.github.io/docstring2pdf/how-to-install/</loc>
+		<lastmod>2023-04-06</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>https://ningensei848.github.io/docstring2pdf/how-to-use/</loc>
+		<lastmod>2023-04-06</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
 		<loc>https://ningensei848.github.io/docstring2pdf/license/</loc>
-		<lastmod>2023-04-05</lastmod>
+		<lastmod>2023-04-06</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>https://ningensei848.github.io/docstring2pdf/reference/src/gen_ref_pages/</loc>
-		<lastmod>2023-04-05</lastmod>
+		<loc>https://ningensei848.github.io/docstring2pdf/reference/scripts/gen_ref_pages/</loc>
+		<lastmod>2023-04-06</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>https://ningensei848.github.io/docstring2pdf/reference/src/inject_external_info/</loc>
-		<lastmod>2023-04-05</lastmod>
+		<loc>https://ningensei848.github.io/docstring2pdf/reference/scripts/inject_external_info/</loc>
+		<lastmod>2023-04-06</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 </urlset>

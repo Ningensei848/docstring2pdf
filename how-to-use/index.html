@@ -7,37 +7,38 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="This is Documentation for docstring2pdf" name="description"/>
 <meta content="Ningensei848" name="author"/>
-<link href="https://ningensei848.github.io/docstring2pdf/" rel="canonical"/>
-<link href="how-it-works/" rel="next"/>
+<link href="https://ningensei848.github.io/docstring2pdf/how-to-use/" rel="canonical"/>
+<link href="../how-to-install/" rel="prev"/>
+<link href="../reference/scripts/gen_ref_pages/" rel="next"/>
 <link href="https://ningensei848.github.io/img/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-9.1.5" name="generator"/>
-<title>docstring2pdf の紹介 - DocString to PDF</title>
-<link href="assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
-<link href="assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<title>docstring2pdf の使い方 - DocString to PDF</title>
+<link href="../assets/stylesheets/main.7a7fce14.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=BIZ+UDPGothic:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"BIZ UDPGothic";--md-code-font:"Noto Sans Mono"}</style>
-<link href="assets/_mkdocstrings.css" rel="stylesheet"/>
-<link href="stylesheets/base.css" rel="stylesheet"/>
-<link href="stylesheets/material.css" rel="stylesheet"/>
-<link href="stylesheets/mkdocstrings.css" rel="stylesheet"/>
-<script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../stylesheets/base.css" rel="stylesheet"/>
+<link href="../stylesheets/material.css" rel="stylesheet"/>
+<link href="../stylesheets/mkdocstrings.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-W1M1TTQDP4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-W1M1TTQDP4",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-W1M1TTQDP4",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
 <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
 <meta content="website" property="og:type"/>
-<meta content="docstring2pdf の紹介 - DocString to PDF" property="og:title"/>
+<meta content="docstring2pdf の使い方 - DocString to PDF" property="og:title"/>
 <meta content="This is Documentation for docstring2pdf" property="og:description"/>
-<meta content="https://ningensei848.github.io/docstring2pdf/assets/images/social/index.png" property="og:image"/>
+<meta content="https://ningensei848.github.io/docstring2pdf/assets/images/social/how-to-use.png" property="og:image"/>
 <meta content="image/png" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="https://ningensei848.github.io/docstring2pdf/" property="og:url"/>
+<meta content="https://ningensei848.github.io/docstring2pdf/how-to-use/" property="og:url"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="docstring2pdf の紹介 - DocString to PDF" name="twitter:title"/>
+<meta content="docstring2pdf の使い方 - DocString to PDF" name="twitter:title"/>
 <meta content="This is Documentation for docstring2pdf" name="twitter:description"/>
-<meta content="https://ningensei848.github.io/docstring2pdf/assets/images/social/index.png" name="twitter:image"/>
+<meta content="https://ningensei848.github.io/docstring2pdf/assets/images/social/how-to-use.png" name="twitter:image"/>
 <script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7857289120965920"></script>
-<link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -48,14 +49,14 @@
                 body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
                 body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
                 body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="assets/javascripts/glightbox.min.js"></script></head>
+                </style><script src="../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#what-is-it">
+<a class="md-skip" href="#usage">
           Skip to content
         </a>
 </div>
@@ -63,7 +64,7 @@
 </div>
 <header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="DocString to PDF" class="md-header__button md-logo" data-md-component="logo" href="." title="DocString to PDF">
+<a aria-label="DocString to PDF" class="md-header__button md-logo" data-md-component="logo" href=".." title="DocString to PDF">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -79,7 +80,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              docstring2pdf の紹介
+              docstring2pdf の使い方
             
           </span>
 </div>
@@ -145,7 +146,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="DocString to PDF" class="md-nav__button md-logo" data-md-component="logo" href="." title="DocString to PDF">
+<a aria-label="DocString to PDF" class="md-nav__button md-logo" data-md-component="logo" href=".." title="DocString to PDF">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
 </a>
     DocString to PDF
@@ -173,14 +174,29 @@
           Home
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../how-it-works/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../how-to-install/">
+        Installation
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview
+          Export &amp; Upload
           <span class="md-nav__icon md-icon"></span>
 </label>
-<a class="md-nav__link md-nav__link--active" href=".">
-        Overview
+<a class="md-nav__link md-nav__link--active" href="./">
+        Export &amp; Upload
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -189,27 +205,59 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#next">
-    Next
+<a class="md-nav__link" href="#how-to-export">
+    How to Export
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-upload">
+    How to Upload
+  </a>
+<nav aria-label="How to Upload" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rclone">
+    rclone をつかう
+  </a>
+<nav aria-label="rclone をつかう" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gcp">
+    GCP から認証情報を得る
+  </a>
+<nav aria-label="GCP から認証情報を得る" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    公式ドキュメント：
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="how-it-works/">
-        Getting Started
-      </a>
+<a class="md-nav__link" href="#google-drive">
+    Google Drive 上で保存先を決める
+  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="how-to-install/">
-        Installation
-      </a>
+<a class="md-nav__link" href="#github-actions">
+    GitHub Actions の設定
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="how-to-use/">
-        Export &amp; Upload
-      </a>
+<a class="md-nav__link" href="#results">
+    Results
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -227,12 +275,12 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="reference/scripts/gen_ref_pages/">
+<a class="md-nav__link" href="../reference/scripts/gen_ref_pages/">
         gen_ref_pages
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="reference/scripts/inject_external_info/">
+<a class="md-nav__link" href="../reference/scripts/inject_external_info/">
         inject_external_info
       </a>
 </li>
@@ -240,7 +288,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="license/">
+<a class="md-nav__link" href="../license/">
         License
       </a>
 </li>
@@ -259,9 +307,56 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#next">
-    Next
+<a class="md-nav__link" href="#how-to-export">
+    How to Export
   </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-upload">
+    How to Upload
+  </a>
+<nav aria-label="How to Upload" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rclone">
+    rclone をつかう
+  </a>
+<nav aria-label="rclone をつかう" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gcp">
+    GCP から認証情報を得る
+  </a>
+<nav aria-label="GCP から認証情報を得る" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    公式ドキュメント：
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#google-drive">
+    Google Drive 上で保存先を決める
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#github-actions">
+    GitHub Actions の設定
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#results">
+    Results
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -270,22 +365,148 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="what-is-it">What is it ?<a class="headerlink" href="#what-is-it" title="Permanent link">¤</a></h1>
-<p>コードを書いてばかり、あるいはデータ分析してばかりで、
-ドキュメントを書くという行為をサボっている組織は少なくない。</p>
-<p>Python においては、その問題を解決しうる仕組みとして
- <a href="https://peps.python.org/pep-0257/"><code>docstring</code></a> がある。
-「コードとは別にドキュメントを書く」からやがて億劫になるのであって、
-それがソースコードとともに書くべきものとなれば、開発チームの意識は変わっていく――</p>
-<p><code>docstring2pdf</code> では、<code>docstring</code> からきれいで見やすい ＋ 検索もできる！
-という静的ドキュメンテーションサイトの生成はもちろん、
-その内容を PDF に出力して Google Drive にアップロードするところまでを実装している。</p>
-<!-- TODO: 既存プロジェクトへの移植も、いくつかの設定ファイルをコピペするだけでよい。 -->
-<p>ドキュメンテーションに悩むすべての組織に、ぜひとも導入を検討してもらいたい。</p>
-<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">¤</a></h2>
+<h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¤</a></h1>
+<h2 id="how-to-export">How to Export<a class="headerlink" href="#how-to-export" title="Permanent link">¤</a></h2>
+<p>設定ファイル等が正しく記述されて <code>poetry run mkdocs serve</code> も滞りなく実行されていれば、
+あとは別途コマンドを実行するだけで PDF への出力は可能となっている：</p>
+<div class="language-shell highlight"><span class="filename">export command</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nv">ENABLE_PDF_EXPORT</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>poetry<span class="w"> </span>run<span class="w"> </span>mkdocs<span class="w"> </span>build
+</code></pre></div>
+<p><a href="https://github.com/orzih/mkdocs-with-pdf#-and-more"><code>ENABLE_PDF_EXPORT</code></a> は、
+PDF を出力したいときに付与する環境変数であり、<code>mkdocs.yml</code> には以下のように指定する：<br/>
+（※環境変数抜きで実行すると、PDF が出力されなくなる）</p>
+<div class="language-yaml highlight"><span class="filename">mkdocs.yml</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">plugins</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">with-pdf</span><span class="p">:</span><span class="w"> </span><span class="c1"># cf. https://github.com/orzih/mkdocs-with-pdf</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">        </span><span class="nt">enabled_if_env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_PDF_EXPORT</span><span class="w">  </span><span class="c1"># (1)!</span>
+</code></pre></div>
+<ol>
+<li>デフォルトでは空白（≒Falsy）な値となり、PDF が出力されない。
+    <code>--watch</code> 等でリビルドを繰り返す際に、PDF への出力は非常に負担がかかるため、
+    <strong>必要な時以外は出力しないようにしておく機能</strong> である。</li>
+</ol>
+<p>こうして、<code>build</code> ディレクトリ直下に <code>document.pdf</code> が出力されていることが確認できれば完了だ。</p>
+<h2 id="how-to-upload">How to Upload<a class="headerlink" href="#how-to-upload" title="Permanent link">¤</a></h2>
+<p>ドキュメントを PDF に出力して得られたまではいいが、
+チーム開発でつかうのであれば共有ドライブに置きたい…という需要は少なくないと思う
+（事実、私の手伝っているチームでもそういう課題があった）。
+また、共有ドライブに置いたとしても、各人が好き勝手してしまい「一体どのファイルが最新なのか？」
+というバージョン管理の問題も発生してしまっている状況もあった。</p>
+<p>つまり、以下の３つが要件である：</p>
+<ol>
+<li>共有ドライブにファイルを置く</li>
+<li>最新版であることがわかるようにする</li>
+<li>人の手を介入させない</li>
+</ol>
+<p>これを満たすには、GitHub Actions で Google Drive にアップロードするしかないと考えて、
+次のような実装を行った。</p>
+<h3 id="rclone"><code>rclone</code> をつかう<a class="headerlink" href="#rclone" title="Permanent link">¤</a></h3>
+<p><a href="https://rclone.org/"><code>rclone</code></a>とは、Go 製の OSS であり、
+あらゆるクラウドストレージ上のファイル管理を行う CLI ツールである。</p>
+<p>これを使えば、GUI での操作やインタラクティブな操作をせずに Google Drive 上の
+任意のフォルダにファイルを置くことができる。</p>
+<!-- block Admonition -->
+<details class="info">
+<summary>以降の内容は、主にチーム向けのものです</summary>
+<p>もし、個人向けに <code>rclone</code> を使いたい場合、サービスアカウントではなく
+あなた自身の <code>client_id</code> を使用するといいでしょう。</p>
+<p>cf. <a href="https://rclone.org/drive/#making-your-own-client-id">https://rclone.org/drive/#making-your-own-client-id</a> <br/>
+cf. <a href="https://gyo.tc/https://www.wave440.com/wave_log/client_id.html">rclone 用に独自の Google Drive クライアント ID を作成する。</a></p>
+</details>
+<!-- end Admonition -->
+<h4 id="gcp">GCP から認証情報を得る<a class="headerlink" href="#gcp" title="Permanent link">¤</a></h4>
+<!-- block Admonition -->
+<div class="admonition quote">
+<p class="admonition-title">Google Drive 向けの <code>rclone</code> では、 サービスアカウントからの利用をサポートしている</p>
 <ul>
-<li><a href="how-it-works/">How it works ?</a></li>
-<li><a href="how-to-install/">How to introduce to existing project ?</a></li>
+<li><a href="https://rclone.org/drive/#service-account-support">https://rclone.org/drive/#service-account-support</a></li>
+</ul>
+</div>
+<!-- end Admonition -->
+<p>以下の手続きを踏むことでサービスアカウントの認証情報（JSONファイル）が入手できる：</p>
+<ol>
+<li><a href="ttps://cloud.google.com/iam/docs/service-accounts-create">公式ドキュメント</a>
+    を読んでサービスアカウントを作成する</li>
+<li>↑ その際に、「ロール」は空白のままでよい</li>
+<li>別の<a href="https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority">公式ドキュメント</a>
+    を読んでドメイン全体の権限をサービスアカウントに委任する</li>
+<li>「アカウントの詳細」からキーの項目に移動し、鍵を追加 &gt;&gt; 新しい鍵を作成　と進む</li>
+<li>JSON ファイルがダウンロードされるので大切に保管する</li>
+</ol>
+<h5 id="_1">公式ドキュメント：<a class="headerlink" href="#_1" title="Permanent link">¤</a></h5>
+<ul>
+<li><a href="https://cloud.google.com/iam/docs/service-accounts-create">サービス アカウントを作成する | IAM のドキュメント | Google Cloud</a></li>
+<li><a href="https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority">ドメイン全体の権限をサービス アカウントに委任する | サーバー間アプリケーションに OAuth 2.0 を使用する | Authorization | Google Developers</a></li>
+</ul>
+<h4 id="google-drive">Google Drive 上で保存先を決める<a class="headerlink" href="#google-drive" title="Permanent link">¤</a></h4>
+<p>次は、「どこにファイルを置くか」を決める。
+必須となるのは、共有ドライブ（旧称・チームドライブ）の ID だ。
+これは、ブラウザ上で共有ドライブを開いたときに表示される URL の一部を参照することで判別できる。</p>
+<p>追加として、共有ドライブのどこかに位置するフォルダの ID もあるとよい。
+<code>rclone</code> から操作しうる範囲を限定して使うようにしたほうが安全だからだ
+（人はいつか必ずミスをするし、そのタイミングは決まっていつも
+<a href="https://google.com/search?q=身構えている時には、死神は来ないものだ">"身構えていないときに来る"</a>）。</p>
+<!-- block Admonition -->
+<details class="note">
+<summary>id の場所</summary>
+<ol>
+<li>ドライブを開く</li>
+<li>URL を見る</li>
+<li><code>drive/folders/{foler_id}</code> から <code>foler_id</code> を抜き出す<ul>
+<li>共有ドライブは <code>0</code>, その中のフォルダは <code>1</code> から始まるようだ</li>
+</ul>
+</li>
+</ol>
+</details>
+<!-- end Admoniton -->
+<h4 id="github-actions">GitHub Actions の設定<a class="headerlink" href="#github-actions" title="Permanent link">¤</a></h4>
+<p>いよいよ †完成† が近づいてきた。
+ここまでよく目を通してくれたと思う、深く感謝する。</p>
+<p>最後は、リポジトリの Settings で Actions に用いるための環境変数を指定していく。</p>
+<p>必要となるのは、以下の５つである：</p>
+<ol>
+<li><code>GCP_SERVICE_ACCOUNT</code> ... サービスアカウントのメールアドレス</li>
+<li><code>SERVICE_ACCOUNT_CREDENTIAL</code> ... サービスアカウントの認証情報の JSON 文字列</li>
+<li><code>TEAM_DRIVE_ID</code> ... 共有ドライブの ID</li>
+<li><code>ROOT_FOLDER_ID</code> (optional) ... 共有ドライブ内にある任意のフォルダの ID</li>
+<li><code>GOOGLE_DRIVE_DIR</code> (optional) ... 自動的に作成されるフォルダ名</li>
+</ol>
+<p><code>ROOT_FOLDER_ID</code> では、基点となるフォルダを指定したが、
+<code>GOOGLE_DRIVE_DIR</code> はブランチごとに作成されるドキュメント群の親ディレクトリとして作成される。
+デフォルトでは、<code>env.FILENAME</code> と同じものが使用されるが、使い分けたい場合は直接変更すること。</p>
+<hr/>
+<p>これらの変数を、Action 実行時の秘密情報として登録する。</p>
+<blockquote>
+<p>Settings &gt;&gt; Secrets and Variables &gt;&gt; Actions &gt;&gt; [New Repository Secret]</p>
+</blockquote>
+<p>変数名と値を入力したら "Add Secret" すればよい。</p>
+<p>こうして、GitHub Actions 実行の準備が全て整った。
+あとは、自分の環境に <a href="https://github.com/Ningensei848/docstring2pdf/blob/main/.github/workflows/actions.yml"><code>.github/workflows/actions.yml</code></a>を作り、内容をコピペしてリポジトリにプッシュするだけである。</p>
+<div class="language-shell highlight"><span class="filename">copy and paste</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># コピペも面倒な皆さんのために、次のようなコマンドをご用意しました〜</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>mkdir<span class="w"> </span>-p<span class="w"> </span>.github/workflows<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a>curl<span class="w"> </span>https://raw.githubusercontent.com/Ningensei848/docstring2pdf/main/.github/workflows/actions.yml<span class="w"> </span>&gt;<span class="w"> </span>.github/workflows/actions.yml
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a><span class="c1"># then, `git commit` and `git push`</span>
+</code></pre></div>
+<h3 id="results">Results<a class="headerlink" href="#results" title="Permanent link">¤</a></h3>
+<p>無事、リポジトリにプッシュされて GitHub Actions が回ったとしよう。
+最終的に、Google Drive 上に PDF ドキュメントがアップロードされる。</p>
+<p>このドキュメントは、<u>GitHub Actions が正常に実行完了するたびに更新される</u>。
+すなわち、<strong>新たにコミットをプッシュするたびに自動的に最新のドキュメントが生成され、
+PDF ファイルを共有ドライブ上に同期させる</strong> ――</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ol>
+<li>共有ドライブにファイルを置く</li>
+<li>最新版であることがわかるようにする</li>
+<li>人の手を介入させない</li>
+</ol>
+</div>
+<p>当初の三要件は、無事に全てクリアできたのではないだろうか。</p>
+<hr/>
+<p>本リポジトリの最終成果物も、当然ながら同期されている。
+以下のリンクから参照してみてほしい：</p>
+<ul>
+<li><a href="https://drive.google.com/file/d/1ZKmctj0j7pJnoBCdoCsAN1MghouQFTlT"><code>docstring2pdf</code> で生成された PDF ドキュメント on Google Drive</a></li>
 </ul>
 </article>
 </div>
@@ -297,13 +518,26 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Next: Getting Started" class="md-footer__link md-footer__link--next" href="how-it-works/" rel="next">
+<a aria-label="Previous: Installation" class="md-footer__link md-footer__link--prev" href="../how-to-install/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Installation
+              </div>
+</div>
+</a>
+<a aria-label="Next: gen_ref_pages" class="md-footer__link md-footer__link--next" href="../reference/scripts/gen_ref_pages/" rel="next">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Getting Started
+                gen_ref_pages
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -339,7 +573,7 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="assets/javascripts/bundle.407015b8.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.407015b8.min.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
