@@ -77,4 +77,4 @@ golang で実装することにより手軽さも速度も実現しているよ�
 
 以上を踏まえて、具体的な導入方法についても説明する
 
-→ [How to install](how-to-introduce.md)
+→ [How to install](how-to-install.md)

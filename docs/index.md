@@ -26,4 +26,4 @@ Python においては、その問題を解決しうる仕組みとして
 ## Next
 
 - [How it works ?](how-it-works.md)
-- [How to introduce to existing project ?](how-to-introduce.md)
+- [How to introduce to existing project ?](how-to-install.md)

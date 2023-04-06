@@ -6,7 +6,7 @@ authors:
 date: 2023-04-06
 ---
 
-# How to install ?
+# Installation
 
 ## Python libraries
 
