@@ -354,12 +354,15 @@
 <p>テーマがきれいであることはもとより、様々なカスタマイズができるし、開発も盛んである。
 これのおかげで、いま読んでいるこのドキュメントも今風のいい感じの UX を提供できている。</p>
 <h3 id="mkdocs-with-pdf"><code>mkdocs-with-pdf</code><a class="headerlink" href="#mkdocs-with-pdf" title="Permanent link">¤</a></h3>
+<p><code>mkdocs</code> のプラグインであり、ビルドしたサイトに対し <a href="http://weasyprint.org/"><code>WeasyPrint</code></a> を
+使用して PDF に変換する処理を担う。</p>
 <p><a href="https://github.com/orzih/mkdocs-with-pdf">https://github.com/orzih/mkdocs-with-pdf</a></p>
-<p>端的に言えば、「これしかなかった」から使っている。
-これがデファクトというよりは、これ以外のものが見当たらなかった。
-（あっても同様に開発が止まっているもの）</p>
-<p>メンテされていない風に見えるのが非常に気になるところだが、
-代替案が見つけられていない以上仕方がない。</p>
+<p>端的に言えば、「これしか見当たらなかった」から採用しているが、
+もう少し時間をかければより良いアプローチがあるかもしれない。
+メンテされていない風に見えるのが非常に気になるところだが、
+代替案が見つけられていない以上仕方がないと半ば諦めている。</p>
+<p><code>mkdocs</code> のプラグインでなくとも、静的サイトを PDF 出力するようなツールについて
+<a href="https://github.com/Ningensei848/docstring2pdf/issues/new"><strong>別の候補があったら教えてほしい</strong></a>。</p>
 <h2 id="github-actions-and-google-drive">GitHub Actions and Google Drive<a class="headerlink" href="#github-actions-and-google-drive" title="Permanent link">¤</a></h2>
 <p>３つの機能の外側には、GitHub Actions によるビルド自動化と
  <a href="https://rclone.org/drive"><code>rclone</code></a> による Google Drive との同期も行われている。
@@ -378,7 +381,6 @@ Amazon S3やGoogle Drive、Alibaba Cloud、Dropbox、Megaなど40以上の
 <p>ストレージごとの公式 API やライブラリを使う以外ではもっとも有名でデファクトなツールである。
 基本的には単なる Wrapper CLI なので対象が増えるごとに大きくなりがちなところ、
 golang で実装することにより手軽さも速度も実現しているようだ（素直にすごい）。</p>
-<hr/>
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">¤</a></h2>
 <p>以上を踏まえて、具体的な導入方法についても説明する</p>
 <p>→ <a href="../how-to-install/">How to install</a></p>

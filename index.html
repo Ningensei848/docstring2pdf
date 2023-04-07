@@ -271,16 +271,25 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="what-is-it">What is it ?<a class="headerlink" href="#what-is-it" title="Permanent link">¤</a></h1>
-<p>コードを書いてばかり、あるいはデータ分析してばかりで、
+<!-- Admonition -->
+<div class="admonition tip">
+<p class="admonition-title">the answer is ...</p>
+<p><strong><code>docstring2pdf</code></strong> とは、コードとともにドキュメントを書くチームを支援し、
+<u>常にそのドキュメントを最新に保つためのプロジェクト</u>である。</p>
+</div>
+<!-- end Admonition -->
+<hr/>
+<p>いざ Python を使い始めたはいいが、
+コードを書いてばかり / データ分析するだけしてそのまま放置してしまい、
 ドキュメントを書くという行為をサボっている組織は少なくない。</p>
 <p>Python においては、その問題を解決しうる仕組みとして
  <a href="https://peps.python.org/pep-0257/"><code>docstring</code></a> がある。
-「コードとは別にドキュメントを書く」からやがて億劫になるのであって、
-それがソースコードとともに書くべきものとなれば、開発チームの意識は変わっていく――</p>
+「<u>コードとは別にドキュメントを書かねばならない…</u>」からやがて億劫になるのであって、
+それが<strong>ソースコードとともに書くべきもの</strong>となれば、開発チームの意識は変わっていく――</p>
 <p><code>docstring2pdf</code> では、<code>docstring</code> からきれいで見やすい ＋ 検索もできる！
 という静的ドキュメンテーションサイトの生成はもちろん、
-その内容を PDF に出力して Google Drive にアップロードするところまでを実装している。</p>
-<!-- TODO: 既存プロジェクトへの移植も、いくつかの設定ファイルをコピペするだけでよい。 -->
+その内容を PDF に出力して Google Drive にアップロードするところまでを実装した。
+既存プロジェクトへの移植も、いくつかの設定ファイルをコピペするだけでよい。</p>
 <p>ドキュメンテーションに悩むすべての組織に、ぜひとも導入を検討してもらいたい。</p>
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">¤</a></h2>
 <ul>
