@@ -56,12 +56,11 @@ jobs:
 
     - name: Build Docs and Export PDF
       env:
-        ENABLE_PDF_EXPORT: true
         GOOGLE_ADS_ID: ${{ secrets.GOOGLE_ADS_ID }}
         GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
       run: |
-        poetry run python scripts/inject_external_info.py
-        poetry run mkdocs build
+        ENABLE_PDF_EXPORT=1 poetry run python scripts/inject_external_info.py
+        ENABLE_PDF_EXPORT=1 poetry run mkdocs build
         rm mkdocs.yml
         mv backup_mkdocs.yml mkdocs.yml
         export FILENAME="docs/$(echo "${{ env.FILE_TITLE }}_${{ env.BRANCH }}.pdf" | sed "s#/#+#g")"
