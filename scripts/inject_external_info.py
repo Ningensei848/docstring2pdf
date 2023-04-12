@@ -21,6 +21,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 pattern_ga4 = re.compile(r"G-\w+")
+pattern_show_source = re.compile(r"show_source:\s+(true|on|yes|1)")
+
+MKDOCS_PATH = Path.cwd() / "mkdocs.yml"
+BACKUP_PATH = Path.cwd() / "backup_mkdocs.yml"
+
+
+def create_backup() -> None:
+    """`mkdocs.yml` のバックアップファイルを作成する"""
+    # read content of `mkdocs.yml`
+    config = MKDOCS_PATH.read_text()
+    # prepare backup (note: this file is deleted after `mkdocs export`)
+    BACKUP_PATH.write_text(config)
+
+    return
 
 
 def prepare_google_ads() -> None:
@@ -61,14 +75,10 @@ def prepare_google_analytics() -> None:
     """
 
     ga4_id = os.environ.get("GOOGLE_ANALYTICS_ID", "G-XXXXXXXXXX")
-    mkdocs_path = Path.cwd() / "mkdocs.yml"
+    config = MKDOCS_PATH.read_text()
 
-    # read content of `mkdocs.yml`
-    config = mkdocs_path.read_text()
-    # prepare backup (note: this file is deleted after `mkdocs export`)
-    mkdocs_path.with_stem("backup_mkdocs").write_text(config)
     # write new text with `G-XXXXXXXXXX` replaced by `$GOOGLE_ANALYTICS_ID`
-    mkdocs_path.write_text(pattern_ga4.sub(ga4_id, config))
+    MKDOCS_PATH.write_text(pattern_ga4.sub(ga4_id, config))
 
     return
 
@@ -107,7 +117,35 @@ def prepare_template_sitemap() -> None:
     return
 
 
+def disable_show_source() -> None:
+    """Disable Handler Option (`show_source`) in MkDocs (via `mkdocs.yml`)
+
+    Python Hanfler の option で、ソースコードの表示をオフにする。
+
+    PDF として出力する際に、当該ソースコードが長大になると **うまく出力されなくなる**。
+    これを防止するために、ソースコード無しで出力させる。
+    （あるいは出力方法を変更すれば解決するかも……？）
+
+    静的サイトとしてビルドする際は、ソースコードがあったほうがいいと思う。
+    よって、python スクリプトで当該部分を切り替えられるようにした。
+    """
+
+    config = config = MKDOCS_PATH.read_text()
+    MKDOCS_PATH.write_text(
+        # Change flag `show_source` from _truthy_ to _falsy_
+        pattern_show_source.sub("show_source: no", config)
+    )
+
+    return
+
+
 if __name__ == "__main__":
+    create_backup()
+
     prepare_google_ads()
     prepare_google_analytics()
     prepare_template_sitemap()
+
+    # PDF として出力する際は、ソースコードの表示をオフにする
+    if os.environ.get("ENABLE_PDF_EXPORT", False):
+        disable_show_source()

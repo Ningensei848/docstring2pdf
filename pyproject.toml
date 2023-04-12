@@ -57,7 +57,7 @@ mypy = "mypy --config-file pyproject.toml"
 format = "black ."
 isort = "isort ."
 # for generating documentation
-docs_export = "python scripts/inject_external_info.py && ENABLE_PDF_EXPORT=1 mkdocs build && rm mkdocs.yml && mv backup_mkdocs.yml mkdocs.yml"
+docs_export = "ENABLE_PDF_EXPORT=1 python scripts/inject_external_info.py && ENABLE_PDF_EXPORT=1 mkdocs build && rm mkdocs.yml && mv backup_mkdocs.yml mkdocs.yml"
 docs_serve = "mkdocs serve"
 
 [tool.flake8]

@@ -70,6 +70,7 @@ plugins:
   - social:
       cards_font: Noto Sans JP
   # docstring から自動生成
+  # cf. https://mkdocstrings.github.io/python/usage/
   - mkdocstrings:
       handlers:
         python:
@@ -79,6 +80,7 @@ plugins:
               ignore_init_summary: yes
             merge_init_into_class: yes
             show_submodules: no
+            show_source: yes
 
   # サイトではなく PDF として出力
   - with-pdf: # cf. https://github.com/orzih/mkdocs-with-pdf
