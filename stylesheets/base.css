@@ -31,6 +31,9 @@
 }
 
 /* URL を区切りで自動改行させない */
+.md-typeset a {
+     word-break: break-all;
+}
 .doc-contents a {
      word-break: break-all;
 }
